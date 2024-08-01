@@ -21,6 +21,8 @@ npm start
 
 ## Features
 
+### Completed
+
 - [x] Add item
 - [x] Delete item
 - [x] Update item
