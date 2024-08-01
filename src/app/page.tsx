@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import {
+  Modal,
   Box,
   Stack,
   Typography,
   Button,
-  Modal,
   TextField,
 } from "@mui/material";
+
 import { firestore } from "@/app/firebase";
 import {
   collection,
@@ -91,8 +92,110 @@ export default function Home() {
   const handleClose = () => setOpen(false);
 
   return (
-    <Box>
-      <Typography variant="h1">Inventory Management</Typography>
+    <Box
+      width={"100vw"}
+      height={"100vh"}
+      display={"flex"}
+      flexDirection={"column"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      gap={2}
+    >
+      <Modal open={open} onClose={handleClose}>
+        <Box
+          position={"absolute"}
+          top={"50%"}
+          left={"50%"}
+          width={400}
+          bgcolor={"white"}
+          border={"2px solid #000"}
+          p={4}
+          display={"flex"}
+          flexDirection={"column"}
+          gap={3}
+          sx={{ transform: "translate(-50%, -50%)" }}
+        >
+          <Typography variant="h2">Add items</Typography>
+          <Stack width="100%" direction={"row"} spacing={2}>
+            <TextField
+              variant="outlined"
+              fullWidth
+              value={itemName}
+              onChange={(e) => {
+                setItemName(e.target.value);
+              }}
+            ></TextField>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                addItem(itemName);
+                setItemName("");
+              }}
+            >
+              Add
+            </Button>
+          </Stack>
+        </Box>
+      </Modal>
+
+      <Button
+        variant="contained"
+        onClick={() => {
+          handleOpen();
+        }}
+      >
+        Add New Item
+      </Button>
+      <Box border={"1px solid black"}>
+        <Box
+          width={"800px"}
+          height={"100px"}
+          bgcolor={"GrayText"}
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
+          <Typography variant="h2">Inventory Items</Typography>
+        </Box>
+
+        <Stack width={"800px"} height={"300px"} spacing={2} overflow={"auto"}>
+          {inventory.map((item) => {
+            return (
+              <Box
+                key={item.name}
+                width={"100%"}
+                minHeight={"150px"}
+                display={"flex"}
+                justifyContent={"space-between"}
+                alignItems={"center"}
+              >
+                <Typography
+                  variant="h3"
+                  textAlign={"center"}
+                  textTransform={"capitalize"}
+                >
+                  {item.name}
+                </Typography>
+                <Typography
+                  variant="h3"
+                  textAlign={"center"}
+                  textTransform={"capitalize"}
+                >
+                  {item.quantity}
+                </Typography>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    removeItem(item.name);
+                  }}
+                >
+                  Remove
+                </Button>
+              </Box>
+            );
+          })}
+        </Stack>
+      </Box>
     </Box>
   );
 }
