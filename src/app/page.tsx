@@ -9,7 +9,7 @@ import {
   Modal,
   TextField,
 } from "@mui/material";
-import { Firestore } from "firebase/firestore";
+import { firestore } from "@/app/firebase";
 import {
   collection,
   doc,
