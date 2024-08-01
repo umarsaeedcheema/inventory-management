@@ -41,6 +41,55 @@ export default function Home() {
   const [inventory, setInventory] = useState<inventoryListType>([]);
   const [open, setOpen] = useState(false);
   const [itemName, setItemName] = useState("");
+
+  const updateInventory = async () => {
+    const snapShot = query(collection(firestore, "inventory"));
+    const docs = await getDocs(snapShot);
+    const inventoryList: inventoryListType = [];
+    docs.forEach((doc) => {
+      inventoryList.push({ name: doc.id, ...doc.data() });
+    });
+    setInventory(inventoryList);
+    //
+    console.log(inventoryList);
+  };
+
+  useEffect(() => {
+    updateInventory();
+  }, []);
+
+  const removeItem = async (item: string) => {
+    const docRef = doc(firestore, "inventory", item);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const { quantity } = docSnap.data();
+      if (quantity > 1) {
+        await setDoc(docRef, { quantity: quantity - 1 });
+      } else {
+        await deleteDoc(docRef);
+      }
+      await updateInventory();
+    }
+  };
+
+  const addItem = async (item: string) => {
+    const docRef = doc(firestore, "inventory", item);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const { quantity } = docSnap.data();
+      await setDoc(docRef, { quantity: quantity + 1 });
+      await updateInventory();
+    } else {
+      await setDoc(docRef, { quantity: 1 });
+      await updateInventory();
+    }
+  };
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Box>
       <Typography variant="h1">Inventory Management</Typography>
