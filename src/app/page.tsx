@@ -10,7 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 
-import { firestore } from "@/app/firebase";
+import { firestore } from "@/app/firebase/firebase";
 import {
   collection,
   doc,
