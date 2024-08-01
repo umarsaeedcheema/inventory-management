@@ -35,8 +35,10 @@ const style = {
   gap: 3,
 };
 
+type inventoryListType = { name: string; [key: string]: any }[];
+
 export default function Home() {
-  const [inventory, setInventory] = useState([]);
+  const [inventory, setInventory] = useState<inventoryListType>([]);
   const [open, setOpen] = useState(false);
   const [itemName, setItemName] = useState("");
   return (
