@@ -21,17 +21,22 @@ npm start
 
 ## Features
 
-## Features
-
 - [x] Add item
 - [x] Delete item
 - [x] Update item
+
+### In Progress
+
+- [ ] Recipe Suggestion
 - [ ] User authentication
+- [ ] Low stock alerts
 - [ ] Item categorization
 - [ ] Inventory search functionality
+
+### Future
+
 - [ ] Item quantity tracking
 - [ ] Reporting and analytics
-- [ ] Low stock alerts
 - [ ] Batch and expiration date tracking
 - [ ] Import/export inventory data
 
