@@ -26,14 +26,15 @@ npm start
 - [x] Add item
 - [x] Delete item
 - [x] Update item
+- [x] User authentication
 
 ### In Progress
 
+- [ ] Database management for multiple users
+- [ ] Inventory search functionality
 - [ ] Recipe Suggestion
-- [ ] User authentication
 - [ ] Low stock alerts
 - [ ] Item categorization
-- [ ] Inventory search functionality
 
 ### Future
 
