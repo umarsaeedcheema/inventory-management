@@ -11,7 +11,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (user) {
-      router.push("/");
+      router.push("/components/inventory");
     }
   }, [user, router]);
 
