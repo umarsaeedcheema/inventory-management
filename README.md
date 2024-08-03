@@ -43,8 +43,6 @@ The project is structured as follows:
   page.tsx
 ```
 
-## License
-
 ## Features
 
 ### Completed
@@ -68,5 +66,7 @@ The project is structured as follows:
 - [ ] Reporting and analytics
 - [ ] Batch and expiration date tracking
 - [ ] Import/export inventory data
+
+## License
 
 MIT
