@@ -31,12 +31,14 @@ The project is structured as follows:
 ```/app
   /components
     - layout.tsx
+    - protected-layout.tsx
     - navbar.tsx
     /inventory
       - inventory-service.ts
       - page.tsx
     /login
       - authContext.tsx
+      - page.tsx
   layout.tsx
   page.tsx
 ```
