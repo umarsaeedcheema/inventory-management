@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "./login/authContext";
 
@@ -11,12 +11,16 @@ export default function ProtectedLayout({
 }>) {
   const { user } = useAuth();
   const router = useRouter();
+  const [initialLoading, setInitialLoading] = useState(true);
 
   useEffect(() => {
-    if (!user) {
-      router.push("/login");
+    if (initialLoading) {
+      setInitialLoading(false);
+      if (!user) {
+        router.push("/components/login");
+      }
     }
-  }, [user, router]);
+  }, [user, initialLoading, router]);
 
   if (!user) {
     return null;
