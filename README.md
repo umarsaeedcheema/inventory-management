@@ -5,6 +5,11 @@ A simple inventory management system that allows users to add, remove, and updat
 ## Installation
 
 1. Clone the repository
+
+```bash
+git clone https://github.com/umarsaeedcheema/inventory-management.git
+```
+
 2. Run the following command to install the required dependencies:
 
 ```bash
@@ -18,6 +23,25 @@ Run the following command to start the application:
 ```bash
 npm start
 ```
+
+## Structure
+
+The project is structured as follows:
+
+```/app
+  /components
+    - layout.tsx
+    - navbar.tsx
+    /inventory
+      - inventory-service.ts
+      - page.tsx
+    /login
+      - authContext.tsx
+  layout.tsx
+  page.tsx
+```
+
+## License
 
 ## Features
 
@@ -42,7 +66,5 @@ npm start
 - [ ] Reporting and analytics
 - [ ] Batch and expiration date tracking
 - [ ] Import/export inventory data
-
-## License
 
 MIT
