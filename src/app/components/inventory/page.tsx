@@ -16,7 +16,7 @@ import {
   removeItem,
 } from "./inventory-service";
 
-export default function Table() {
+export default function Home() {
   const [inventory, setInventory] = useState<InventoryItem[]>([]);
   const [open, setOpen] = useState(false);
   const [itemName, setItemName] = useState("");
